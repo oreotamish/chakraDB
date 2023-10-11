@@ -1,4 +1,5 @@
 use bytes::Buf;
+use bytes::BytesMut;
 
 fn buffer_to_array(buf: &mut BytesMut) -> Vec<String> {
     let mut vec = vec![];
@@ -20,4 +21,5 @@ fn buffer_to_array(buf: &mut BytesMut) -> Vec<String> {
             }
         }
     }
+    vec
 }

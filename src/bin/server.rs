@@ -1,4 +1,5 @@
-use tokio::net::TcpListener
+use tokio::net::TcpListener;
+use bytes::BytesMut;
 
 #[tokio::main]
 pub async fn main() -> Result<(), std::io::Error> {
@@ -6,6 +7,9 @@ pub async fn main() -> Result<(), std::io::Error> {
     loop {
         let (mut socket, _) = listener.accept().await?;
         println!("Accepted connection from {:?}", socket);
+        let mut buf = BytesMut::with_capacity(1024);
+        let _ = socket.try_read_buf(&mut buf);
+        println!("buffer {:?}", buf);
     }
 }
 

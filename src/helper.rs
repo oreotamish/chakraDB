@@ -1,7 +1,7 @@
 use bytes::Buf;
 use bytes::BytesMut;
 
-fn buffer_to_array(buf: &mut BytesMut) -> Vec<String> {
+pub fn buffer_to_array(buf: &mut BytesMut) -> Vec<String> {
     let mut vec = vec![];
     let length = buf.len();
     let mut word = "".to_string();

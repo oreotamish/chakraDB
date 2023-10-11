@@ -5,7 +5,7 @@ pub enum Command {
   }
 
 impl Command {
-    pub fn from_str(str: &String) -> Command {
+    pub fn get_command(str: &String) -> Command {
         match str.as_bytes() {
             b"set" => Command::Set,
             b"get" => Command::Get,

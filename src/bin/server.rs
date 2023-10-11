@@ -9,7 +9,8 @@ pub async fn main() -> Result<(), std::io::Error> {
         println!("Accepted connection from {:?}", socket);
         let mut buf = BytesMut::with_capacity(1024);
         let _ = socket.try_read_buf(&mut buf);
-        println!("buffer {:?}", buf);
+        let attrs = buffer_to_array(&mut buf);
+        println!("buffer {:?}", attrs);
     }
 }
 

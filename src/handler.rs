@@ -46,7 +46,7 @@ impl Shutdown {
     }
 
     pub async fn listen_recv(&mut self) -> Result<(), tokio::sync::broadcast::error::RecvError> {
-        println!("inside Listen_recv");
+        println!("Graceful handling and shutdown.");
 
         self.notify.recv().await?;
         self.shutdown = true;
@@ -73,6 +73,9 @@ impl Handler {
         command: Command,
         attrs: Vec<String>,
     ) -> Result<(), std::io::Error> {
+        if attrs.len() == 0 {
+            return Err(std::io::Error::from(ErrorKind::InvalidData));
+        }
         let connection = &mut self.connection;
         let db = &self.db;
 

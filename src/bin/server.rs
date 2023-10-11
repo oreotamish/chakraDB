@@ -1,5 +1,6 @@
-use chakraDB::server;
-use chakraDB::Listener;
+use chakra_db::server;
+// use std::env;
+use chakra_db::Listener;
 use tokio::signal;
 use tokio::{
     net::TcpListener,
@@ -8,6 +9,7 @@ use tokio::{
 
 #[tokio::main]
 pub async fn main() -> Result<(), std::io::Error> {
+    // env::set_var("RUST_BACKTRACE", "1");
     let listener = TcpListener::bind("127.0.0.1:8081").await?;
     let shutdown = signal::ctrl_c();
     let (notify_shutdown, _) = broadcast::channel(1);

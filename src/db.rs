@@ -26,7 +26,7 @@ impl Db {
             .insert(String::from(key), Bytes::from(val));
 
         match p {
-            Some(p) => Ok("r Ok"),
+            Some(_p) => Ok("r Ok"),
             None => Ok("Ok"),
         }
     }
